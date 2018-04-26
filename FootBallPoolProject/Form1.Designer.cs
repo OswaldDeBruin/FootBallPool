@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(712, 424);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(712, 478);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -63,9 +63,9 @@
             this.flowLayoutPanel1.Controls.Add(this.CreateButton);
             this.flowLayoutPanel1.Controls.Add(this.SimulateButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 384);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 433);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(706, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(706, 42);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // CreateButton
@@ -101,7 +101,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(350, 375);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(350, 424);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // poolResultsLabel
@@ -111,7 +111,7 @@
             this.poolResultsLabel.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.poolResultsLabel.Location = new System.Drawing.Point(359, 0);
             this.poolResultsLabel.Name = "poolResultsLabel";
-            this.poolResultsLabel.Size = new System.Drawing.Size(350, 381);
+            this.poolResultsLabel.Size = new System.Drawing.Size(350, 430);
             this.poolResultsLabel.TabIndex = 2;
             // 
             // teamViewLabel
@@ -119,16 +119,16 @@
             this.teamViewLabel.AutoSize = true;
             this.teamViewLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.teamViewLabel.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teamViewLabel.Location = new System.Drawing.Point(3, 37);
+            this.teamViewLabel.Location = new System.Drawing.Point(3, 42);
             this.teamViewLabel.Name = "teamViewLabel";
-            this.teamViewLabel.Size = new System.Drawing.Size(344, 338);
+            this.teamViewLabel.Size = new System.Drawing.Size(344, 382);
             this.teamViewLabel.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 424);
+            this.ClientSize = new System.Drawing.Size(712, 478);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";

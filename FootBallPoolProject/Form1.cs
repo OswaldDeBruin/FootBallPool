@@ -37,7 +37,13 @@ namespace FootBallPoolProject
                 s += "Team " + (i + 1) + ":\n";
                 s += "  Attack: " + pool.teams[i].attack + "\n";
                 s += " Defence: " + pool.teams[i].defence + "\n";
-                s += "Strategy: " + pool.teams[i].strategy + "\n\n";
+                s += "Strategy: " + pool.teams[i].strategy + "\n";
+                if (pool.teamStats!=null && pool.teamStats.Count > i)
+                {
+                    s += "Wins:" + pool.teamStats[i].wins+"\n";
+                    s += "Total Goals Scored/Against/Difference:" + pool.teamStats[i].goalsScored + "/" + pool.teamStats[i].goalsAgainst + "/" + pool.teamStats[i].goalDifference + "\n";
+                }
+                s += "\n";
             }
             teamViewLabel.Text = s;
         }
@@ -49,15 +55,18 @@ namespace FootBallPoolProject
             return s + i.ToString();
         }
 
+
+        //Big method to parse the pool results into simple, readable text
         private void UpdatePoolViewer()
         {
             poolResultsLabel.Text = "";
             if (pool == null || pool.roster == null) return;
-            string s = ""; //short string name for clear code building
+            string s = "Match results:\n"; //short string name for clear code building
             for (int i = 0; i < pool.roster.Count; i++)
             {
                 if (pool.roster[i]!=null)
                 {
+                    s += intStringFormatting(i+1) + ":";
                     for (int j = 0; j < pool.roster[i].Count; j++)
                     {
                         if (j != 0)//Nice text divider
@@ -101,7 +110,7 @@ namespace FootBallPoolProject
         {
             pool.ResetPool();//TODO: This functionality might deserve its own button when expanding
             pool.SimulatePool();
-            //TODO: When adding functionality of teams improving by playing matches, update Team viewer as well for now this is not necessary
+            UpdateTeamViewer();
             UpdatePoolViewer();
         }
     }

@@ -10,7 +10,18 @@ public class FootBallPool
 
     public List<FootBallTeam> teams = new List<FootBallTeam>();
     //All the teams entered in the pool
-    
+
+    //simple datastructure to calculate team ranking
+    //This is seperate from the Team datastructure, because it is pool-specific and does not affect play
+    public class TeamStats
+    {
+        public int points = 0;
+        public int wins = 0;
+        public int goalDifference = 0;
+        public int goalsScored = 0;
+        public int goalsAgainst = 0;
+    }
+    public List<TeamStats> teamStats = new List<TeamStats>();//public list for easy stat reading by GUI
 
     private Random random = new Random();
 
@@ -70,6 +81,39 @@ public class FootBallPool
         }
     }
 
+    private TeamStats match2TeamStatCalculation(TeamStats thisTeam, int pointsFor, int pointsAgainst)
+    {
+        if (pointsFor > pointsAgainst) {
+            thisTeam.wins++;
+        }
+        thisTeam.goalDifference += pointsFor - pointsAgainst;
+        thisTeam.goalsScored += pointsFor;
+        thisTeam.goalsAgainst += pointsAgainst;
+        return thisTeam;
+    }
+
+    private void calculateTeamStats()
+    {
+        if (teams == null || roster == null) return;//to prevent read errors
+        teamStats.Clear();
+        for (int i=0; i<teams.Count; i++)
+        {
+            teamStats.Add(new TeamStats());
+        }
+        for (int i = 0; i < roster.Count; i++)
+        {
+            for (int j = 0; j<roster[i].Count; j++)
+            {
+                if (roster[i][j] != null)
+                {
+                    teamStats[i] = match2TeamStatCalculation(teamStats[i], roster[i][j].score.Item1, roster[i][j].score.Item2);
+                    teamStats[j] = match2TeamStatCalculation(teamStats[j], roster[i][j].score.Item2, roster[i][j].score.Item1);
+                }
+            }
+        }
+    }
+
+
     public void ResetPool()
     {
         if (roster == null) return;
@@ -83,6 +127,7 @@ public class FootBallPool
                 }
             }
         }
+        teamStats.Clear();
     }
 
     public void SimulatePool()
@@ -98,5 +143,6 @@ public class FootBallPool
                 }
             }
         }
+        calculateTeamStats();
     }
 }
