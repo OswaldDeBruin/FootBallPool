@@ -1,0 +1,10 @@
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\bin\Debug\FootBallPoolProject.exe.config
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\bin\Debug\FootBallPoolProject.exe
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\bin\Debug\FootBallPoolProject.pdb
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.csprojResolveAssemblyReference.cache
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.Form1.resources
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.Properties.Resources.resources
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.csproj.GenerateResource.cache
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.csproj.CoreCompileInputs.cache
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.exe
+E:\Lone MSVS projects\FootBallPoolProject\FootBallPoolProject\obj\Debug\FootBallPoolProject.pdb
