@@ -21,6 +21,7 @@ public class FootBallPool
         public int goalsScored = 0;
         public int goalsAgainst = 0;
     }
+    //TODO: Maybe make this list a return value instead
     public List<TeamStats> teamStats = new List<TeamStats>();//public list for easy stat reading by GUI
 
     private Random random = new Random();
@@ -85,7 +86,13 @@ public class FootBallPool
     {
         if (pointsFor > pointsAgainst) {
             thisTeam.wins++;
+            thisTeam.points += 3;
         }
+        else if (pointsFor == pointsAgainst)
+        {
+            thisTeam.points += 1;
+        }
+
         thisTeam.goalDifference += pointsFor - pointsAgainst;
         thisTeam.goalsScored += pointsFor;
         thisTeam.goalsAgainst += pointsAgainst;
@@ -113,6 +120,49 @@ public class FootBallPool
         }
     }
 
+    private bool rankHigher(TeamStats A, TeamStats B)
+    {
+        if (A.points > B.points) return true;
+        if (A.points < B.points) return false;
+        if (A.wins > B.wins) return true;
+        if (A.wins < B.wins) return false;
+        if (A.goalDifference > B.goalDifference) return true;
+        if (A.goalDifference < B.goalDifference) return false;
+        if (A.goalsScored > B.goalsScored) return true;
+        if (A.goalsScored < B.goalsScored) return false;
+        if (A.goalsAgainst < B.goalsAgainst) return true;
+        if (A.goalsAgainst > B.goalsAgainst) return false;
+        return true;
+    }
+
+    public List<int> rankings()
+    {
+        //creating all stats
+        calculateTeamStats();
+        if (teamStats == null) return null;
+        //creating a return value list with the indexes of the teams in ranked order
+        List<int> rankIndex = new List<int>();
+        for (int i = 0; i < teamStats.Count; i++)
+        {
+            rankIndex.Add(i);
+        }
+        
+        //using simple bubble sort to order ranking
+        for (int i = 0; i<rankIndex.Count-1; i++)
+        {
+            for (int j = i+1; j<rankIndex.Count; j++)
+            {
+                if (!rankHigher(teamStats[rankIndex[i]], teamStats[rankIndex[j]]))
+                {
+                    int temp = rankIndex[i];
+                    rankIndex[i] = rankIndex[j];
+                    rankIndex[j] = temp;
+                }
+            }
+        }
+
+        return rankIndex;
+    } 
 
     public void ResetPool()
     {

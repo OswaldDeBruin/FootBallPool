@@ -40,6 +40,7 @@ namespace FootBallPoolProject
                 s += "Strategy: " + pool.teams[i].strategy + "\n";
                 if (pool.teamStats!=null && pool.teamStats.Count > i)
                 {
+                    s += "Points:" + pool.teamStats[i].points + "\n";
                     s += "Wins:" + pool.teamStats[i].wins+"\n";
                     s += "Total Goals Scored/Against/Difference:" + pool.teamStats[i].goalsScored + "/" + pool.teamStats[i].goalsAgainst + "/" + pool.teamStats[i].goalDifference + "\n";
                 }
@@ -96,6 +97,19 @@ namespace FootBallPoolProject
                     s += "\n";
                 }
             }
+            if (pool.teamStats != null)
+            {
+                var ranking = pool.rankings();
+                if (ranking != null)
+                {
+                    s += "Rankings: \n";
+                    for( int i = 0; i<ranking.Count; i++)
+                    {
+                        s += (i+1) +":  Team " +(ranking[i]+1) + "\n";
+                    }
+                }
+            }
+
             poolResultsLabel.Text = s;
         }
 
