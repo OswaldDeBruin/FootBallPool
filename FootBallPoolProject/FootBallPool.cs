@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 public class FootBallPool
 {
+    //Class Footballpool acts as an agent for teams and matches, to assign teams to matches and handle the matches's outcomes.
+
     public List<List<FootBallMatch> > roster = new List<List<FootBallMatch> >();
     //2 dimensional list of matches 
     //first index is Home team, second index is Away team.
@@ -24,6 +27,7 @@ public class FootBallPool
     //TODO: Maybe make this list a return value instead
     public List<TeamStats> teamStats = new List<TeamStats>();//public list for easy stat reading by GUI
 
+    //Since this is the highest agent in the simulation, it gets the agency over the random number generator
     private Random random = new Random();
 
     public FootBallPool()
@@ -82,17 +86,17 @@ public class FootBallPool
         }
     }
 
+    //This method assigns points to a team in the pool based on a math's score outcome
     private TeamStats match2TeamStatCalculation(TeamStats thisTeam, int pointsFor, int pointsAgainst)
     {
-        if (pointsFor > pointsAgainst) {
+        if (pointsFor > pointsAgainst) {//A winning team gets 3 points
             thisTeam.wins++;
             thisTeam.points += 3;
         }
-        else if (pointsFor == pointsAgainst)
+        else if (pointsFor == pointsAgainst)//If a team ties, both teams get 1 point
         {
             thisTeam.points += 1;
         }
-
         thisTeam.goalDifference += pointsFor - pointsAgainst;
         thisTeam.goalsScored += pointsFor;
         thisTeam.goalsAgainst += pointsAgainst;
@@ -102,17 +106,23 @@ public class FootBallPool
     private void calculateTeamStats()
     {
         if (teams == null || roster == null) return;//to prevent read errors
+
+        //Making new stats
         teamStats.Clear();
         for (int i=0; i<teams.Count; i++)
         {
             teamStats.Add(new TeamStats());
         }
+
+        //Checking every match
         for (int i = 0; i < roster.Count; i++)
         {
             for (int j = 0; j<roster[i].Count; j++)
             {
-                if (roster[i][j] != null)
+                if (roster[i][j] != null && roster[i][j].played)
                 {
+                    //Assigning points for each team individually
+                    //Note: i=home index, j=away index, Item1=home-score, Item2=Away-score
                     teamStats[i] = match2TeamStatCalculation(teamStats[i], roster[i][j].score.Item1, roster[i][j].score.Item2);
                     teamStats[j] = match2TeamStatCalculation(teamStats[j], roster[i][j].score.Item2, roster[i][j].score.Item1);
                 }
@@ -120,6 +130,7 @@ public class FootBallPool
         }
     }
 
+    //a comparative method for sorting to determine if Team A ranks Higher than Team B
     private bool rankHigher(TeamStats A, TeamStats B)
     {
         if (A.points > B.points) return true;
@@ -135,6 +146,7 @@ public class FootBallPool
         return true;
     }
 
+    //The ranking method returns a list of team indices in the order of ranking in the pool.
     public List<int> rankings()
     {
         //creating all stats

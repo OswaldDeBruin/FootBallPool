@@ -26,6 +26,7 @@ namespace FootBallPoolProject
             pool.CreateNewRandomPool(4);//creating a new pool with 4 teams
         }
 
+        //Big method to parse the team statistics into simple, readable text
         private void UpdateTeamViewer()
         {
             teamViewLabel.Text = "";
@@ -94,7 +95,7 @@ namespace FootBallPoolProject
                         }
 
                     }
-                    s += "\n";
+                    s += "\n\n";
                 }
             }
             if (pool.teamStats != null)
