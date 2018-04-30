@@ -4,7 +4,7 @@ public class FootBallMatch
 {
     //Class footballmatch acts as a data structure to hold match outcome statistics AND as an agent for letting teams compete with eachother
     //The current structure is used with the FootBallPool class, but can also be used in a knockout structure without any alteration.
-    //TODO: when expanding, the simulation functionality should be delegated to a seperate agaent class at some point.
+    //TODO: when expanding, the simulation functionality should be delegated to a seperate agent class at some point.
 
     
     public FootBallTeam Home;//Home team skill statistics
